@@ -1,15 +1,29 @@
 package com.example.vote;
 
 import com.example.vote.dto.UserDto;
-import com.example.vote.model.Post;
-import com.example.vote.model.User;
+import com.example.vote.post.Post;
+import com.example.vote.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class VoteApplicationTests {
+
+	private ArrayList<Post> generateDummyPosts(int count) {
+		var posts = new ArrayList<Post>();
+
+		for (int i = 0; i < count; ++i) {
+			new
+			new
+
+		}
+
+
+	}
 
 	@Test
 	void contextLoads() {

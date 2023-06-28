@@ -1,7 +1,7 @@
-package com.example.vote.controller;
+package com.example.vote.user;
 
 import com.example.vote.dto.UserDto;
-import com.example.vote.model.User;
+import com.example.vote.user.User;
 
 import java.util.Collection;
 

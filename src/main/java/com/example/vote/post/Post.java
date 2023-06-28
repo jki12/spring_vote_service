@@ -1,5 +1,7 @@
-package com.example.vote.model;
+package com.example.vote.post;
 
+import com.example.vote.dto.PostDto;
+import com.example.vote.user.User;
 import lombok.Getter;
 import org.springframework.lang.Nullable;
 
@@ -19,19 +21,14 @@ public class Post {
 
     // constructor, modifyPost front에서 검증한 올바른 title, description 값이 들어온다고 가정;
 
-
-    public Post(User user, String title) {
-        this(user, title, "");
-    }
-
-    public Post(User user, String title, String description) {
-        assert (title.length() <= MAX_LENGTH && description.length() <= MAX_LENGTH);
+    public Post(PostDto postDto) {
+        assert (postDto.getTitle().length() <= MAX_LENGTH && postDto.getDescription().length() <= MAX_LENGTH);
 
         this.createdTime = OffsetDateTime.now();
 
-        this.user = user;
-        this.title = title;
-        this.description = description;
+        this.user = postDto.getUser();
+        this.title = postDto.getTitle();
+        this.description = postDto.getDescription();
     }
 
     private void modifyPost(String title, String description) {

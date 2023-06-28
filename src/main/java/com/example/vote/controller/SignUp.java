@@ -1,11 +1,15 @@
 package com.example.vote.controller;
 
 import com.example.vote.dto.UserDto;
-import com.example.vote.model.User;
+import com.example.vote.user.MemoryUserRepo;
+import com.example.vote.user.User;
+import com.example.vote.user.UserRepo;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+
 @RestController
-public class Register {
+public class SignUp {
     private static final UserRepo repo = new MemoryUserRepo();
 
     @PostMapping("/users/signup") // url design ref : github(signup), stackoverflow(users/signup)
@@ -16,6 +20,6 @@ public class Register {
 
     @GetMapping("/users")
     public Object getUsers() {
-        return repo.getUsers();
+        return repo.getUsers(); // admin use only.
     }
 }

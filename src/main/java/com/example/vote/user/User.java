@@ -1,4 +1,4 @@
-package com.example.vote.model;
+package com.example.vote.user;
 
 import com.example.vote.Util;
 import com.example.vote.dto.UserDto;
