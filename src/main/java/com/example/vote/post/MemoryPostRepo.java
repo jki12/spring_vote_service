@@ -1,12 +1,10 @@
 package com.example.vote.post;
 
-import com.example.vote.user.User;
+import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
+@Repository
 public class MemoryPostRepo implements PostRepo {
     private final ArrayList<Post> repo = new ArrayList<>();
 
@@ -22,5 +20,10 @@ public class MemoryPostRepo implements PostRepo {
         for (var post : repo) if (post.getUser().getName().equals(userName)) res.add(post);
 
         return res;
+    }
+
+    @Override
+    public ArrayList<Post> getPosts() {
+        return repo;
     }
 }

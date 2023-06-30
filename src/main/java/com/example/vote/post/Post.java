@@ -21,12 +21,12 @@ public class Post {
 
     // constructor, modifyPost front에서 검증한 올바른 title, description 값이 들어온다고 가정;
 
-    public Post(PostDto postDto) {
+    public Post(User user, PostDto postDto) {
         assert (postDto.getTitle().length() <= MAX_LENGTH && postDto.getDescription().length() <= MAX_LENGTH);
 
         this.createdTime = OffsetDateTime.now();
 
-        this.user = postDto.getUser();
+        this.user = user;
         this.title = postDto.getTitle();
         this.description = postDto.getDescription();
     }
@@ -50,6 +50,10 @@ public class Post {
         if (upVotes.contains(user)) return false;
 
         return downVotes.add(user);
+    }
+
+    public boolean isModified() {
+        return (modifiedTime != null);
     }
 
     public int[] getVoteResult() {

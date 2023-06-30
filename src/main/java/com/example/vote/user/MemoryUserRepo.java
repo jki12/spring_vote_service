@@ -1,19 +1,20 @@
 package com.example.vote.user;
 
-import com.example.vote.dto.UserDto;
-import com.example.vote.user.User;
-import com.example.vote.user.UserRepo;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.UUID;
 
+@Repository
 public class MemoryUserRepo implements UserRepo {
-    private final HashSet<User> users = new HashSet<>();
-    @Override
-    public boolean save(UserDto userDto) {
-        if (findByEmail(userDto.getEmail()) != null) return false;
+    private final HashSet<User> userEntities = new HashSet<>();
 
-        boolean res = users.add(new User(userDto));
+    @Override
+    public boolean save(User user) {
+        if (findByEmail(user.getEmail()) != null) return false;
+
+        boolean res = userEntities.add(user);
 
         assert (res);
 
@@ -21,21 +22,21 @@ public class MemoryUserRepo implements UserRepo {
     }
 
     @Override
-    public User findByEmail(String email) {
-        for (var user : users) if (user.getEmail().equals(email)) return user;
+    public User findById(UUID id) {
+        for (var user : userEntities) if (user.getId().equals(id)) return user;
 
         return null;
     }
 
     @Override
-    public User findByName(String name) {
-        for (var user : users) if (user.getName().equals(name)) return user;
+    public User findByEmail(String email) {
+        for (var user : userEntities) if (user.getEmail().equals(email)) return user;
 
         return null;
     }
 
     @Override
     public Collection getUsers() {
-        return users;
+        return userEntities;
     }
 }

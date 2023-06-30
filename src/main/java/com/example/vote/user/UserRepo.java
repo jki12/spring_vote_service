@@ -1,16 +1,14 @@
 package com.example.vote.user;
 
-import com.example.vote.dto.UserDto;
-import com.example.vote.user.User;
-
 import java.util.Collection;
+import java.util.UUID;
 
 public interface UserRepo {
-    boolean save(UserDto userDto);
+    boolean save(User user);
+
+    User findById(UUID id); // post.
 
     User findByEmail(String email);
-
-    User findByName(String name);
 
     Collection<User> getUsers(); // for test.
 }

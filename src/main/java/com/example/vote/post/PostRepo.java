@@ -6,4 +6,6 @@ public interface PostRepo {
     void save(Post post);
 
     ArrayList<Post> findByUserName(String userName);
+
+    ArrayList<Post> getPosts();
 }
